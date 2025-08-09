@@ -1,16 +1,26 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'compass_nominations',
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'Kushal07',
+// Configure pool with connection string or individual parameters
+const poolConfig = {
   max: 20,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-});
+  connectionTimeoutMillis: 60000,
+  ssl: { rejectUnauthorized: false }
+};
+
+// Use DATABASE_URL if available, otherwise use individual parameters
+if (process.env.DATABASE_URL) {
+  poolConfig.connectionString = process.env.DATABASE_URL;
+} else {
+  poolConfig.host = process.env.DB_HOST || 'ballast.proxy.rlwy.net';
+  poolConfig.port = process.env.DB_PORT || 21189;
+  poolConfig.database = process.env.DB_NAME || 'railway';
+  poolConfig.user = process.env.DB_USER || 'postgres';
+  poolConfig.password = process.env.DB_PASSWORD || 'iUiraliVntdoxOWkWdaijZiBdWAmugxM';
+}
+
+const pool = new Pool(poolConfig);
 
 // Test the connection
 pool.on('connect', () => {
