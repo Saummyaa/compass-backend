@@ -18,7 +18,7 @@ const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = process.env.ALLOWED_ORIGINS 
       ? process.env.ALLOWED_ORIGINS.split(',')
-      : ['http://localhost:3000', 'http://localhost:8080', 'https://compass-backend-production-e15e.up.railway.app/', 'https://compass-backend-production-e15e.up.railway.app'];
+      : ['http://localhost:3000', 'http://localhost:8080'];
     
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);

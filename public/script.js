@@ -1,5 +1,6 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:3000/api';
+// Use the current domain for API calls (works for both local and hosted)
+const API_BASE_URL = window.location.origin + '/api';
 
 // DOM Elements
 const nominationForm = document.getElementById('nominationForm');

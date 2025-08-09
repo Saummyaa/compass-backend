@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const BASE_URL = 'http://localhost:3000';
+// Use environment variable or default to localhost
+const BASE_URL = process.env.API_URL || 'http://localhost:3000';
 const API_URL = `${BASE_URL}/api`;
 
 // Test data
