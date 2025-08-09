@@ -13,11 +13,11 @@ const poolConfig = {
 if (process.env.DATABASE_URL) {
   poolConfig.connectionString = process.env.DATABASE_URL;
 } else {
-  poolConfig.host = process.env.DB_HOST || 'ballast.proxy.rlwy.net';
-  poolConfig.port = process.env.DB_PORT || 21189;
+  poolConfig.host = process.env.DB_HOST || 'trolley.proxy.rlwy.net';
+  poolConfig.port = process.env.DB_PORT || 18488;
   poolConfig.database = process.env.DB_NAME || 'railway';
   poolConfig.user = process.env.DB_USER || 'postgres';
-  poolConfig.password = process.env.DB_PASSWORD || 'iUiraliVntdoxOWkWdaijZiBdWAmugxM';
+  poolConfig.password = process.env.DB_PASSWORD || 'OBhKBiZXjwCGbbsLyoZPuuEDiOLkYkXL';
 }
 
 const pool = new Pool(poolConfig);
