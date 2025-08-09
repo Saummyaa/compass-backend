@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compass Nomination Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-compass"></i>
+                    <h1>Compass</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#form" class="nav-link active">Submit Nomination</a>
+                    <a href="#stats" class="nav-link">Statistics</a>
+                    <a href="#nominations" class="nav-link">View All</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Form Section -->
+            <section id="form" class="section active">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Join Our Team</h2>
+                        <p>Submit your nomination to become part of our amazing community</p>
+                    </div>
+
+                    <form id="nominationForm" class="nomination-form">
+                        <div class="form-grid">
+                            <!-- Personal Information -->
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i>
+                                    Full Name *
+                                </label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="course">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    Course *
+                                </label>
+                                <input type="text" id="course" name="course" required>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">
+                                    <i class="fas fa-phone"></i>
+                                    Phone Number *
+                                </label>
+                                <input type="tel" id="phone" name="phone_no" required>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email Address *
+                                </label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <!-- Domain Selection -->
+                            <div class="form-group full-width">
+                                <label for="domain">
+                                    <i class="fas fa-code"></i>
+                                    Domain *
+                                </label>
+                                <select id="domain" name="domain" required>
+                                    <option value="">Select your domain of interest</option>
+                                    <option value="Sponsorship & Marketing">Sponsorship & Marketing</option>
+                                    <option value="Social Media Team">Social Media Team</option>
+                                    <option value="UI/UX">UI/UX</option>
+                                    <option value="App Dev">App Development</option>
+                                    <option value="Web Dev">Web Development</option>
+                                    <option value="Cybersecurity Team">Cybersecurity Team</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <!-- Social Media -->
+                            <div class="form-group">
+                                <label for="instagram">
+                                    <i class="fab fa-instagram"></i>
+                                    Instagram ID
+                                </label>
+                                <input type="text" id="instagram" name="insta_id" placeholder="@username">
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="github">
+                                    <i class="fab fa-github"></i>
+                                    GitHub ID
+                                </label>
+                                <input type="text" id="github" name="github_id" placeholder="username">
+                                <span class="error-message"></span>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-venus-mars"></i>
+                                    Gender *
+                                </label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="Male" required>
+                                        <span class="radio-custom"></span>
+                                        Male
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="Female" required>
+                                        <span class="radio-custom"></span>
+                                        Female
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="Others" required>
+                                        <span class="radio-custom"></span>
+                                        Others
+                                    </label>
+                                </div>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Submit Nomination</span>
+                            <div class="loader"></div>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="stats" class="section">
+                <div class="stats-container">
+                    <h2>Statistics</h2>
+                    <div class="stats-grid" id="statsGrid">
+                        <!-- Stats will be loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nominations List Section -->
+            <section id="nominations" class="section">
+                <div class="nominations-container">
+                    <div class="nominations-header">
+                        <h2>All Nominations</h2>
+                        <div class="filters">
+                            <select id="domainFilter">
+                                <option value="">All Domains</option>
+                            </select>
+                            <button id="refreshBtn" class="refresh-btn">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div class="nominations-list" id="nominationsList">
+                        <!-- Nominations will be loaded dynamically -->
+                    </div>
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">
+            <div class="toast-content">
+                <i class="toast-icon"></i>
+                <span class="toast-message"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
