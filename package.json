@@ -8,7 +8,6 @@
     "dev": "nodemon server.js",
     "migrate": "node migrations/migrate.js",
     "test": "node test-api.js",
-    "test-hosted": "node test-hosted-api.js",
     "seed": "node insert-sample-data.js"
   },
   "keywords": ["express", "postgresql", "nomination", "api"],

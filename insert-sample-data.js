@@ -1,7 +1,6 @@
 const axios = require('axios');
 
-// Use environment variable or default to localhost
-const API_BASE_URL = (process.env.API_URL || 'http://localhost:3000') + '/api';
+const API_BASE_URL = 'http://localhost:3000/api';
 
 // Sample nomination data
 const sampleNominations = [

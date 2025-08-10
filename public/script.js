@@ -1,6 +1,17 @@
 // API Configuration
-// Use the current domain for API calls (works for both local and hosted)
-const API_BASE_URL = window.location.origin + '/api';
+// Automatically determine the API base URL based on the current environment
+const API_BASE_URL = (() => {
+    // If we're on Railway (production), use the current domain
+    if (window.location.hostname.includes('railway.app')) {
+        return `${window.location.protocol}//${window.location.host}/api`;
+    }
+    // If we're on localhost (development), use localhost
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:3000/api';
+    }
+    // Default fallback - use current domain
+    return `${window.location.protocol}//${window.location.host}/api`;
+})();
 
 // DOM Elements
 const nominationForm = document.getElementById('nominationForm');

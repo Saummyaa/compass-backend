@@ -18,14 +18,25 @@ const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = process.env.ALLOWED_ORIGINS 
       ? process.env.ALLOWED_ORIGINS.split(',')
-      : ['http://localhost:3000', 'http://localhost:8080'];
+      : [
+          'http://localhost:3000', 
+          'http://localhost:8080', 
+          'https://compass-backend-production-e15e.up.railway.app',
+          'https://compass-backend-production-e15e.up.railway.app/'
+        ];
     
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
+    // Allow any Railway domain for flexibility
+    if (origin && origin.includes('railway.app')) {
+      return callback(null, true);
+    }
+    
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
+      console.log('CORS blocked origin:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -47,7 +58,7 @@ app.use(express.static('public'));
 
 // Request logging middleware
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url} - ${req.ip}`);
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url} - ${req.ip} - Origin: ${req.get('Origin') || 'none'}`);
   next();
 });
 
